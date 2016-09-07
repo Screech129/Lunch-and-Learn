@@ -243,9 +243,3 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-/ApiTester/
-/Tools
-/WebApplication1
-/LnLTake2.sln
-/WebApplication1.sln
-/LnLTake2
