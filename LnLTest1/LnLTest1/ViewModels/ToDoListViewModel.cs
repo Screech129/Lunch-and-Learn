@@ -15,38 +15,7 @@ namespace LnLTest1.ViewModels
     public class ToDoListViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        DbHelper DbHelper = new DbHelper();
-        public ToDoListViewModel ()
-        {
-            AddToDoItem = new Command(async () => await AddItem());
-        }
-
-
-        public async Task FillToDoItems ()
-        {
-            //await DbHelper.TestData();
-            var toDoList = await DbHelper.Get();
-            ToDoItems = new ObservableCollection<ToDoItem>(toDoList.Where(x => x.Done == false));
-        }
-
-
-        public async Task AddItem ()
-        {
-            var item = new ToDoItem
-            {
-                Done = false,
-                Name = NewItem
-            };
-            await DbHelper.Insert(item);
-            await FillToDoItems();
-        }
-
-        public async Task CompleteItem ()
-        {
-
-            await DbHelper.Update(selectedItem);
-            await FillToDoItems();
-        }
+        private readonly DbHelper dbHelper = new DbHelper();
 
         private bool done;
         public bool Done
@@ -109,5 +78,37 @@ namespace LnLTest1.ViewModels
         }
 
         public ICommand AddToDoItem { get; protected set; }
+
+        public ToDoListViewModel ()
+        {
+            AddToDoItem = new Command(async () => await AddItem());
+        }
+
+
+        public async Task FillToDoItems ()
+        {
+            //await dbHelper.TestData();
+            var toDoList = await dbHelper.Get();
+            ToDoItems = new ObservableCollection<ToDoItem>(toDoList.Where(x => x.Done == false));
+        }
+
+        public async Task AddItem ()
+        {
+            var item = new ToDoItem
+            {
+                Done = false,
+                Name = NewItem
+            };
+            await dbHelper.Insert(item);
+            await FillToDoItems();
+        }
+
+        public async Task CompleteItem ()
+        {
+
+            await dbHelper.Update(selectedItem);
+            await FillToDoItems();
+        }
+
     }
 }
