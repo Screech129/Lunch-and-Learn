@@ -250,5 +250,6 @@ ModelManifest.xml
 /LnLTake2.sln
 /ApiTester/
 /ApplicantTracker
-/LunchAndLearnToDo
-/LunchAndLearnToDo.sln
+
+
+*.zip
