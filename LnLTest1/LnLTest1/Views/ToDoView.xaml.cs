@@ -15,19 +15,23 @@ namespace LnLTest1.Views
         {
             InitializeComponent();
 
-            ToDoList.ItemSelected += async (s, e) => await CompleteItem();       
+            ToDoList.ItemSelected += async (s, e) => await CompleteItem();
         }
 
         protected async override void OnAppearing ()
         {
             base.OnAppearing();
             var vm = BindingContext as ToDoListViewModel;
-            await vm.FillToDoItems();
+            if (vm.Authenticated)
+            {
+                await vm.FillToDoItems();
+                this.loginButton.IsVisible = false;
+            }
         }
 
-        
-        
-        private async Task CompleteItem()
+
+
+        private async Task CompleteItem ()
         {
             var vm = BindingContext as ToDoListViewModel;
             await vm.CompleteItem();

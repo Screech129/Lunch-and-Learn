@@ -11,6 +11,8 @@
         <Entry Text="{Binding NewItem}" WidthRequest="300"/>
             <Button Text="Add" Command="{Binding AddToDoItem}"/>
         </StackLayout>
+        <Button x:Name="loginButton" Text="Sign-in" MinimumHeightRequest="30" 
+    Command="{Binding Login}"/>
         <ListView x:Name="ToDoList" 
               ItemsSource="{Binding ToDoItems}"
               SelectedItem ="{Binding SelectedItem}"
@@ -21,6 +23,7 @@
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
+        
   </StackLayout>
  
 </ContentPage>

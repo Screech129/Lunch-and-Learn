@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Authorization\IAuthenticate.cs" />
     <Compile Include="Model\DbHelper.cs" />
     <Compile Include="Model\ToDoItem.cs" />
     <Compile Include="Services\SyncService.cs" />

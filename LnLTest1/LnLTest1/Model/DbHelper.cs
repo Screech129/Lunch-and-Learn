@@ -16,7 +16,7 @@ namespace LnLTest1.Data
 {
     public class DbHelper
     {
-        MobileServiceClient client;
+        public MobileServiceClient client;
         IMobileServiceSyncTable<ToDoItem> toDoTable;
         private bool initialized;
         public DbHelper ()
@@ -39,7 +39,7 @@ namespace LnLTest1.Data
         {
             try
             {
-                if (initialized)
+                if (!initialized)
                 {
                     await Initialize();
                 }
@@ -54,7 +54,7 @@ namespace LnLTest1.Data
 
         public async Task<List<ToDoItem>> Get ()
         {
-            if (initialized)
+            if (!initialized)
             {
                 await Initialize();
             }
@@ -63,7 +63,7 @@ namespace LnLTest1.Data
 
         public async Task DeleteItem (ToDoItem item)
         {
-            if (initialized)
+            if (!initialized)
             {
                 await Initialize();
             }
@@ -74,7 +74,7 @@ namespace LnLTest1.Data
         {
             try
             {
-                if (initialized)
+                if (!initialized)
                 {
                     await Initialize();
                 }

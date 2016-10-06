@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Forms;
+using System.Threading.Tasks;
+using LnLTest1.Authorization;
 
 namespace LnLTest1
 {
     public class App : Application
     {
-
+        public  static  IAuthenticate Authenticator { get; private set; }
         public App ()
         {
             var toDoPage = new ToDoView();
@@ -30,6 +32,11 @@ namespace LnLTest1
         protected override void OnResume ()
         {
             // Handle when your app resumes
+        }
+
+        public static void Init(IAuthenticate authenticator)
+        {
+            Authenticator = authenticator;
         }
     }
 }

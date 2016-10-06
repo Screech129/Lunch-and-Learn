@@ -48,6 +48,21 @@ namespace LnLTest1.ViewModels
 
         }
 
+        private bool authenticated;
+
+        public bool Authenticated
+        {
+            get
+            {
+                return authenticated;
+            }
+            set
+            {
+                authenticated = value;
+                PropertyChanged?.Invoke(this,new PropertyChangedEventArgs("Authenticated"));
+            }
+        }
+
         private ObservableCollection<ToDoItem> toDoItems;
         public ObservableCollection<ToDoItem> ToDoItems
         {
@@ -78,10 +93,26 @@ namespace LnLTest1.ViewModels
         }
 
         public ICommand AddToDoItem { get; protected set; }
+        public ICommand Login { get; protected set; }
 
         public ToDoListViewModel ()
         {
             AddToDoItem = new Command(async () => await AddItem());
+            Login = new Command(async () => await LoginUser());
+
+        }
+
+        public async Task LoginUser()
+        {
+            if (App.Authenticator != null)
+            {
+                authenticated = await App.Authenticator.Authenticate();
+            }
+
+            if (authenticated)
+            {
+                await FillToDoItems();
+            }
         }
 
 
