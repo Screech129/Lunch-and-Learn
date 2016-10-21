@@ -29,8 +29,8 @@ namespace LnLTest1.Data
             var offlineTable = new MobileServiceSQLiteStore("localstore.db");
             offlineTable.DefineTable<ToDoItem>();
 
-            toDoTable = client.GetSyncTable<ToDoItem>();
             await client.SyncContext.InitializeAsync(offlineTable, new SyncService());
+            toDoTable = client.GetSyncTable<ToDoItem>();
             await client.SyncContext.PushAsync();
             initialized = true;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using SQLitePCL;
 using UIKit;
 
 namespace LunchAndLearnToDo.iOS
@@ -23,6 +24,7 @@ namespace LunchAndLearnToDo.iOS
         public override bool FinishedLaunching (UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            CurrentPlatform.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

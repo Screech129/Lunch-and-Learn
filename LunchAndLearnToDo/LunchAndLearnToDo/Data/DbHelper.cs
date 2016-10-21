@@ -18,7 +18,8 @@ namespace LunchAndLearnToDo.Data
 
         public DbHelper ()
         {
-            client = new MobileServiceClient("https://test123456755.azurewebsites.net");
+            client = new MobileServiceClient("https://lunchandlearntodo.azurewebsites.net");
+            //client = new MobileServiceClient("https://test123456755.azurewebsites.net");
         }
 
         public async Task Initialize ()
@@ -26,9 +27,9 @@ namespace LunchAndLearnToDo.Data
             //Setup the offline sync
             var offlineTable = new MobileServiceSQLiteStore("localstore.db");
             offlineTable.DefineTable<ToDoItem>();
-            
-            toDoTable = client.GetSyncTable<ToDoItem>();
+
             await client.SyncContext.InitializeAsync(offlineTable, new SyncService());
+            toDoTable = client.GetSyncTable<ToDoItem>();
             await client.SyncContext.PushAsync();
 
             initialized = true;

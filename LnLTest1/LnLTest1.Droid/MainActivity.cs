@@ -28,7 +28,7 @@ namespace LnLTest1.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             CurrentPlatform.Init();
-            App.Init((IAuthenticate)this);
+            //App.Init((IAuthenticate)this);
             LoadApplication(new App());
         }
 

@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace LunchAndLearnToDo.Droid
 {
@@ -20,6 +21,8 @@ namespace LunchAndLearnToDo.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            CurrentPlatform.Init();
+
             LoadApplication(new App());
         }
     }
