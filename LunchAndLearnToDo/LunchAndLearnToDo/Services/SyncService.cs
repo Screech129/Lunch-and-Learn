@@ -47,7 +47,7 @@ namespace LunchAndLearnToDo.Services
                     }
 
 
-                    operation.Item[MobileServiceSystemColumns.Version] = serverItem[MobileServiceSystemColumns.Version];
+                    serverItem[MobileServiceSystemColumns.Version] = operation.Item[MobileServiceSystemColumns.Version];
                 }
             } while (conflictError != null);
 

@@ -13,7 +13,7 @@
             </StackLayout>
             <ListView x:Name="ToDoList" 
               ItemsSource="{Binding ToDoItems}"
-              SelectedItem ="{Binding SelectedItem}"
+              SelectedItem ="{Binding SelectedItem}" IsPullToRefreshEnabled="True" Refreshing="ToDoList_OnRefreshing"
               >
                 <ListView.ItemTemplate>
                     <DataTemplate>
